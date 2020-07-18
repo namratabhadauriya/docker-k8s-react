@@ -1,0 +1,8 @@
+language: generic 
+sudo: required
+services:
+  - docker
+before_install:
+  - docker build -t namratabhadauriya/docker-k8s-react -f Dockerfile.dev .
+script:
+  - docker run -e CI=true namratabhadauriya/docker-k8s-react npm run test -- --coverage
